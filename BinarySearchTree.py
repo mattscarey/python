@@ -39,10 +39,11 @@ class BinarySearchTree:
                 return current
 
 
-    # takes node, returns node
-    # return the node with the smallest key greater than n.key
-    def successor(self, n):
-        if(n == None):
+    # takes key, returns node
+    # return the node with the smallest key greater than key
+    def successor(self, k):
+        n = self.search(k)
+        if(n == None or n == None):
             return None
         if(n.right != None):
             TempNode = n.right
@@ -65,9 +66,10 @@ class BinarySearchTree:
                     break
             return winner
 
-    # return the node with the largest key smaller than n.key
-    def predecessor(self, n):
-        if(n == None):
+    # return the node with the largest key smaller than key
+    def predecessor(self, k):
+        n = self.search(k)
+        if(n == None or n == None):
             return None
         if(n.left != None):
             TempNode = n.left
@@ -103,18 +105,19 @@ class BinarySearchTree:
                 return node
         return None
             
-    # takes node, returns node
-    def delete(self, n):
-        if(self.root == None):
+    # takes key, returns node
+    def delete(self, k):
+        n = self.search(k)
+        if(self.root == None or n == None):
             return None
         prev = self.root
         curr = self.root
         parent = self.root
         while(curr):
-            if(self.less(n.key, curr.key)):
+            if(self.less(k, curr.key)):
                 prev = curr
                 curr = curr.left
-            elif(self.less(curr.key, n.key)):
+            elif(self.less(curr.key, k)):
                 prev = curr
                 curr = curr.right
             else:
