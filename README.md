@@ -1,5 +1,4 @@
 <h1>Python Files</h1>
-<h5>This is where I will keep my python files and libraries that I make.</h5>
 <br/>
 <h3>Binary Search Tree</h3>
 <h6>BinarySearchTree.py</h6>
