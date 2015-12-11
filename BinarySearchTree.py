@@ -15,12 +15,6 @@ class BinarySearchTree:
         self.parents = True
         self.less = less
 
-    def height(self, n):
-        return_val = 0
-        if(n != None):
-            return_val = 1 + max(self.height(n.left), self.height(n.right))
-        return return_val
-
     # takes value, returns node with key value
     def insert(self, k):
         current = self.root
@@ -110,7 +104,7 @@ class BinarySearchTree:
         return None
             
     # takes node, returns node
-    def delete_node(self, n):
+    def delete(self, n):
         if(self.root == None):
             return None
         prev = self.root
@@ -144,16 +138,5 @@ class BinarySearchTree:
                 if(parent.right.key == n.key):
                     parent.right = newNode
             if(bigTree):
-                self.delete_node(self.successor(n))
+                self.delete(self.successor(n))
             return newNode
-
-
-if __name__ == "__main__":
-    BST = BSTNode(54, BSTNode(50, BSTNode(40), BSTNode(52, BSTNode(51), BSTNode(53))), BSTNode(60, None, BSTNode(80, BSTNode(79))))
-    TheTree = BinarySearchTree(BST)
-    print(str(TheTree.successor(BSTNode(51)).key))
-    print(str(TheTree.predecessor(BSTNode(51)).key))
-    print(str(TheTree.search(51).key))
-    #BSTInsert = BSTNode(54, BSTNode(50, BSTNode(40, BSTNode(52, BSTNode(51), BSTNode(53)))), BSTNode(60, None, BSTNode(80, BSTNode(79, BSTNode(65)))))
-
-
