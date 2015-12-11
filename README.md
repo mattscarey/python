@@ -3,7 +3,6 @@
 <br/>
 <h3>Binary Search Tree</h3>
 <h6>BinarySearchTree.py</h6>
-<br/>
 <p>Binary search trees are a great way to store data that needs to by searched through many times. While searching through a standard list as a data model, it is possible to traverse every
 element before finding the target. With binary search trees, the amount of elements traversed will be closer to the log (base two) of the number of elements in the model. This happens
 because at every node starting from the root, we use our (binary) comparison function to find out which way we need to continue down the tree, thus runling out half of the 
@@ -27,26 +26,20 @@ returns True if a is less than b.
 The BinarySearchTree class can also be initialized with a root element. If nothing is put into the constructor, the less than function
 will default to comparing two integers and the tree wil lbe empty.
 </p>
-<br/>
 <b>BSTNode Class</b>
 <p>
 The BST Node class is used to keep track of all of the nodes in the binary search tree. The search, predecessor, and successor fuctions return objects of this class. The values are easily obtained be calling node<i>.key</i>. The other instance variables:
 node<i>.right</i>
 node<i>.left</i>
 </p>
-<br/>
 <b>insert(k)</b>
 <p>The insert fuction takes a key and returns a node representing the key in case you need it.</p>
-<br/>
 <b>delete(k)</b>
 <p>The delete function takes a key and returns the new node taking the place of the deleted node. Returns None if node was not found.</p>
-<br/>
 <b>successor(k)</b>
 <p>Successor takes a key and retruns the smallest node greater than k</p>
-<br/>
 <b>predecesor(k)</b>
 <p>Predecesor takes a key and returns the largest node smaller than k</p>
-<br/>
 <b>search(k)</b>
 <p>The best for last! Search looks through the tree for a key and returns the node representing that key if found. Will return none if key is not found in tree.</p>
 <br/>
