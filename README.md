@@ -45,3 +45,11 @@ node<i>.left</i>
 <b>search(k)</b>
 <p>The best for last! Search looks through the tree for a key and returns the node representing that key if found. Will return none if key is not found in tree.</p>
 <br/>
+
+<h6>Upcoming</h6>
+<ul>
+<li>Hashtables</li>
+<li>Self Balancing Search Tree (AVL)</li>
+<li>Huffman Encoding</li>
+<li>Sorting Algorithms</li>
+</ul>
