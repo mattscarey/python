@@ -4,16 +4,17 @@
 <h6>BinarySearchTree.py</h6>
 <p>Binary search trees are a great way to store data that needs to by searched through many times. While searching through a standard list as a data model, it is possible to traverse every
 element before finding the target. With binary search trees, the amount of elements traversed will be closer to the log (base two) of the number of elements in the model. This happens
-because at every node starting from the root, we use our (binary) comparison function to find out which way we need to continue down the tree, thus runling out half of the 
+because at every node starting from the root, we use our (binary) comparison function to find out which way we need to continue down the tree, thus ruling out half of the 
 tree at each node. While the log(n) search time is not guaranteed, it will be very close. Later I will implement a new type of tree that will <i>always</i> be log(n) (AVL Trees)</p>
 <b>What's in the file:</b>
 <ul>
 <li>BinarySearchTree Class</li>
 <li>BSTNode Class</li>
+<li>height(n)</li>
 <li>insert(k)</li>
 <li>delete(k)</li>
-<li>successor(k)</li>
-<li>predecessor(k)</li>
+<li>successor(n)</li>
+<li>predecessor(n)</li>
 <li>search(k)</li>
 </ul>
 
@@ -31,14 +32,16 @@ The BST Node class is used to keep track of all of the nodes in the binary searc
 node<i>.right</i>
 node<i>.left</i>
 </p>
+<b>height(n)</b>
+<p>The height function takes a node and calculates the hieght.<i> This function will exceed python's max recursion depth if the node hieght is too large!</i></p>
 <b>insert(k)</b>
 <p>The insert fuction takes a key and returns a node representing the key in case you need it.</p>
 <b>delete(k)</b>
-<p>The delete function takes a key and returns the new node taking the place of the deleted node. Returns None if node was not found.</p>
-<b>successor(k)</b>
-<p>Successor takes a key and retruns the smallest node greater than k</p>
-<b>predecesor(k)</b>
-<p>Predecesor takes a key and returns the largest node smaller than k</p>
+<p>The delete function takes a key, deletes the node in the tree representing that key. Returns None if node was not found.</p>
+<b>successor(n)</b>
+<p>Successor takes a node and returns the smallest node greater than n</p>
+<b>predecesor(n)</b>
+<p>Predecesor takes a node and returns the largest node smaller than n</p>
 <b>search(k)</b>
 <p>The best for last! Search looks through the tree for a key and returns the node representing that key if found. Will return none if key is not found in tree.</p>
 <br/>
