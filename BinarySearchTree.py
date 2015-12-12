@@ -15,6 +15,12 @@ class BinarySearchTree:
         self.parents = True
         self.less = less
 
+    def height(self, n):
+        return_val = 0
+        if(n != None):
+            return_val = 1 + max(self.height(n.left), self.height(n.right))
+        return return_val
+
     # takes value, returns node with key value
     def insert(self, k):
         current = self.root
@@ -39,11 +45,10 @@ class BinarySearchTree:
                 return current
 
 
-    # takes key, returns node
-    # return the node with the smallest key greater than key
-    def successor(self, k):
-        n = self.search(k)
-        if(n == None or n == None):
+    # takes node, returns node
+    # return the node with the smallest key greater than n.key
+    def successor(self, n):
+        if(n == None):
             return None
         if(n.right != None):
             TempNode = n.right
@@ -66,10 +71,9 @@ class BinarySearchTree:
                     break
             return winner
 
-    # return the node with the largest key smaller than key
-    def predecessor(self, k):
-        n = self.search(k)
-        if(n == None or n == None):
+    # return the node with the largest key smaller than n.key
+    def predecessor(self, n):
+        if(n == None):
             return None
         if(n.left != None):
             TempNode = n.left
@@ -105,41 +109,55 @@ class BinarySearchTree:
                 return node
         return None
             
-    # takes key, returns node
+    # takes node, returns None if node not found.
     def delete(self, k):
-        n = self.search(k)
-        if(self.root == None or n == None):
-            return None
-        prev = self.root
-        curr = self.root
-        parent = self.root
-        while(curr):
-            if(self.less(k, curr.key)):
-                prev = curr
-                curr = curr.left
-            elif(self.less(curr.key, k)):
-                prev = curr
-                curr = curr.right
+        parent = None
+        currNode = self.root
+        toDelete = None
+        while currNode: #finds node
+            if(self.less(k, currNode.key)):
+                parent = currNode
+                currNode = currNode.left
+            elif(self.less(currNode.key, k)):
+                parent = currNode
+                currNode = currNode.right
             else:
-                parent = prev
+
+                toDelete = currNode
                 break
-            bigTree = False
-            newNode = n
-            if(n.left == None and n.right == None):
-                newNode = None
-            elif(n.left and n.right == None):
-                newNode = n.left
-            elif(n.right and n.left == None):
-                newNode = n.right
-            else:
-                bigTree = True
-                newNode = BSTNode(self.successor(n), n.left, n.right)
-            if(parent.left):
-                if(parent.left.key == n.key):
-                    parent.left = newNode
-            if(parent.right):
-                if(parent.right.key == n.key):
-                    parent.right = newNode
-            if(bigTree):
-                self.delete(self.successor(n))
-            return newNode
+
+        if toDelete == None:
+            return None
+
+        if toDelete.left == None and toDelete.right == None: #has no children
+            if parent.left == toDelete:
+                parent.left = None
+            if parent.right == toDelete:
+                parent.right = None
+
+        elif toDelete.left and toDelete.right == None: #has left child
+            if parent.left == toDelete:
+                parent.left = toDelete.left
+            if parent.right == toDelete:
+                parent.right = toDelete.left
+
+        elif toDelete.right and toDelete.left == None: #has right child
+            if parent.left == toDelete:
+                parent.left = toDelete.right
+            if parent.right == toDelete:
+                parent.right = toDelete.right
+
+        else: #two children
+            succ = self.successor(toDelete).key
+            self.delete(succ)
+            if parent == None:
+                self.root = BSTNode(succ, toDelete.left, toDelete.right)
+            elif parent.left == toDelete:
+                parent.left = BSTNode(succ, toDelete.left, toDelete.right)
+            elif parent.right == toDelete:
+                parent.right = BSTNode(succ, toDelete.left, toDelete.right)
+
+
+
+
+
